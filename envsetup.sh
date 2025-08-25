@@ -585,6 +585,7 @@ function lunch()
         fi
     fi
 
+    if [[ $ENABLE_SERVICE = "true" ]];then
     if ! check_product $product $release
     then
         # if we can't find a product, try to grab it off the LineageOS GitHub
@@ -598,6 +599,12 @@ function lunch()
         cd $T > /dev/null
         vendor/lineage/build/tools/roomservice.py $product true
         cd - > /dev/null
+    fi
+    else
+    cd $T > /dev/null
+    vendor/lineage/build/tools/gen_build-manifest.sh
+    cd - > /dev/null
+    check_product $product $release
     fi
 
     # Validate the selection and set all the environment stuff
