@@ -494,7 +494,7 @@ function lunch()
         echo "Valid combos must be of the form <product>-<release>-<variant>"
         return 1
     fi
-
+    if [[ $ENABLE_SERVICE = "true" ]];then
     if ! check_product $product $release
     then
         # if we can't find a product, try to grab it off the LineageOS GitHub
@@ -514,6 +514,12 @@ function lunch()
     cd $T > /dev/null
     vendor/lineage/build/tools/gen_build-manifest.sh
     cd - > /dev/null
+    else
+    cd $T > /dev/null
+    vendor/lineage/build/tools/gen_build-manifest.sh
+    cd - > /dev/null
+    check_product $product $release
+    fi
 
     _lunch_meat $product $release $variant
 }
