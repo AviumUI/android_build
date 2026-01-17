@@ -614,13 +614,17 @@ function lunch()
         # if we can't find a product, try to grab it off the LineageOS GitHub
         T=$(gettop)
         cd $T > /dev/null
+	if [[ $ENABLE_SERVICE = "true" ]];then
         vendor/lineage/build/tools/roomservice.py $product
+	fi
         cd - > /dev/null
         check_product $product $release
     else
         T=$(gettop)
         cd $T > /dev/null
+	if [[ $ENABLE_SERVICE = "true" ]];then
         vendor/lineage/build/tools/roomservice.py $product true
+	fi
         cd - > /dev/null
     fi
 
