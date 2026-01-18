@@ -1247,6 +1247,7 @@ if [ -z "${CCACHE_EXEC}" ]; then
     else
         echo "Error: ccache not found. Please install ccache." >&2
     fi
+fi
 
 export ANDROID_BUILD_TOP=$(gettop)
 
