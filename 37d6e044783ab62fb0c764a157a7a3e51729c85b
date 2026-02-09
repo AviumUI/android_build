@@ -16,6 +16,24 @@
       "message": "```suggestion\n            echo \"ccache config found at: $CCACHE_CONF_PATH; Keeping existing settings...\" \u003e\u00262\n```",
       "revId": "37d6e044783ab62fb0c764a157a7a3e51729c85b",
       "serverId": "8582d5b1-6499-4a2f-9eb8-9aae0e0bb54f"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c98e87_e0505a6b",
+        "filename": "envsetup.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1000004
+      },
+      "writtenOn": "2026-02-09T08:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19e6b588_4e6123f0",
+      "revId": "37d6e044783ab62fb0c764a157a7a3e51729c85b",
+      "serverId": "8582d5b1-6499-4a2f-9eb8-9aae0e0bb54f"
     }
   ]
 }
