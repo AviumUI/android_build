@@ -1233,11 +1233,16 @@ if [ -z "${CCACHE_EXEC}" ]; then
         export CCACHE_EXEC=$(command -v ccache)
         [ -z "${CCACHE_DIR}" ] && export CCACHE_DIR="$HOME/.ccache"
         echo "ccache directory found, CCACHE_DIR set to: $CCACHE_DIR" >&2
-        CCACHE_MAXSIZE="${CCACHE_MAXSIZE:-40G}"
-        DIRECT_MODE="${DIRECT_MODE:-false}"
-        $CCACHE_EXEC -o compression=true -o direct_mode="${DIRECT_MODE}" -M "${CCACHE_MAXSIZE}" \
-            && echo "ccache enabled, CCACHE_EXEC set to: $CCACHE_EXEC, CCACHE_MAXSIZE set to: $CCACHE_MAXSIZE, direct_mode set to: $DIRECT_MODE" >&2 \
-            || echo "Warning: Could not set cache size limit. Please check ccache configuration." >&2
+        CCACHE_CONF_PATH="${CCACHE_CONFIGPATH:-$CCACHE_DIR/ccache.conf}"
+        if [ -f "$CCACHE_CONF_PATH" ]; then
+            echo "ccache config found at: $CCACHE_CONF_PATH; Not override existing settings." >&2
+        else
+            CCACHE_MAXSIZE="${CCACHE_MAXSIZE:-40G}"
+            DIRECT_MODE="${DIRECT_MODE:-false}"
+            $CCACHE_EXEC -o compression=true -o direct_mode="${DIRECT_MODE}" -M "${CCACHE_MAXSIZE}" \
+                && echo "ccache enabled, CCACHE_EXEC set to: $CCACHE_EXEC, CCACHE_MAXSIZE set to: $CCACHE_MAXSIZE, direct_mode set to: $DIRECT_MODE" >&2 \
+                || echo "Warning: Could not set cache size limit. Please check ccache configuration." >&2
+        fi
         CURRENT_CCACHE_SIZE=$(du -sh "$CCACHE_DIR" 2>/dev/null | cut -f1)
         if [ -n "$CURRENT_CCACHE_SIZE" ]; then
             echo "Current ccache size is: $CURRENT_CCACHE_SIZE" >&2
