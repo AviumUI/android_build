@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb0393c_8368e617",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2026-02-12T12:53:49Z",
+      "side": 1,
+      "message": "LINEAGE_BUILD is not empty while we build avium",
+      "revId": "4d2dd3cbf87c3365ec06349756ca86447a5cca83",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
