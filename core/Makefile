@@ -2703,6 +2703,9 @@ $(INSTALLED_RECOVERY_BUILD_PROP_TARGET): \
 	$(hide) cat $(INSTALLED_ODM_BUILD_PROP_TARGET) >> $@
 	$(hide) cat $(INSTALLED_PRODUCT_BUILD_PROP_TARGET) >> $@
 	$(hide) cat $(INSTALLED_SYSTEM_EXT_BUILD_PROP_TARGET) >> $@
+	ifneq ($(strip $(TARGET_RECOVERY_PROP_EXT)),)
+		$(hide) cat $(TARGET_RECOVERY_PROP_EXT) >> $@
+	endif
 	$(call append-recovery-ui-properties,$(PRIVATE_RECOVERY_UI_PROPERTIES),$@)
 
 $(call declare-1p-target,$(INSTALLED_RECOVERY_BUILD_PROP_TARGET),build)
